@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LibrAI</title>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo LibraAI" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="/login">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="titulo-section">Bem-vindos ao LibraAI</h1>
+            <p>A IA capaz de ouvir com os olhos e falar com as mãos</p>
+        </div>
+    </div>
+
+
+    <section class="section-image-text" id="section-image-text">
+        <div class="main-container">
+            <div class="image-container">
+                <div class="image-box">
+                    <img src="{{ url_for('static', filename='Images/Image2T.png') }}" alt="Imagem do senhor">
+                </div>
+            </div>
+            <div class="text-container">
+                <h2 class="title-text-container">Sobre Nós</h2>
+                <p class="text-section-2">
+                    Na <strong>LibrAI</strong>, acreditamos que a tecnologia tem o poder de transformar realidades e
+                    quebrar barreiras que, por muito tempo, limitaram o acesso de pessoas surdas e mudas ao mercado de
+                    trabalho. Nosso propósito, visando o <strong>futuro do trabalho</strong>, nasce do desejo de tornar
+                    a comunicação mais acessível, humanizada e inclusiva, permitindo que todos tenham voz, mesmo sem
+                    usar palavras.
+                </p>
+                <p class="text-section-2">
+                    Desenvolvemos um agente de inteligência artificial projetado para aprender e interpretar a Língua de
+                    Sinais. Através da câmera do dispositivo, o usuário realiza gestos, letras ou palavras, e nossa IA
+                    reconhece cada movimento em tempo real, convertendo-o automaticamente em texto como legendas,
+                    facilitando a comunicação com colegas, gestores e clientes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="our-objective">
+        <h1 class="our-objective-title">Nosso objetivo</h1>
+        <div class="cards-container">
+
+            <a href="/1" class="card-link">
+                <div class="card">
+                    <h1>Conectar pessoas</h1>
+                    <p>Promovemos comunicação acessível e natural para que todos possam participar plenamente do
+                        ambiente profissional.</p>
+                    <img src="{{ url_for('static', filename='Images/Image3.jpg') }}" alt="Imagem 1">
+                </div>
+            </a>
+
+            <a href="/2" class="card-link">
+                <div class="card">
+                    <h1>Ampliar Oportunidades</h1>
+                    <p>Criamos ferramentas que abrem portas no mercado de trabalho, permitindo que talentos
+                        comunicativos sejam reconhecidos sem limitações.</p>
+                    <img src="{{ url_for('static', filename='Images/Image4.jpg') }}" alt="Imagem 2">
+                </div>
+            </a>
+
+            <a href="/3" class="card-link">
+                <div class="card">
+                    <h1>Tecnologia com Propósito</h1>
+                    <p>Desenvolvemos soluções inteligentes que respeitam, entendem e traduzem a linguagem humana para
+                        aproximar pessoas e eliminar barreiras.</p>
+                    <img src="{{ url_for('static', filename='Images/Image5.jpg') }}" alt="Imagem 2">
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="learning-track">
+
+        <h1 class="track-title">Trilha de Aprendizagem</h1>
+        <p class="track-description">
+            Explore conteúdos desenvolvidos para ampliar sua compreensão sobre acessibilidade,
+            inclusão e o papel da tecnologia no futuro do trabalho.
+        </p>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress-container">
+            <p>Seu progresso</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="timeline">
+
+            <!-- MODULE 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h2>Conectar Pessoas</h2>
+                    <p>
+                        Entenda como a comunicação acessível transforma ambientes de trabalho e
+                        cria pontes reais entre pessoas, eliminando barreiras antes invisíveis.
+                    </p>
+                    <a href="/trilha/1" class="module-button">Acessar módulo</a>
+                </div>
+            </div>
+
+            <!-- MODULE 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h2>Ampliar Oportunidades</h2>
+                    <p>
+                        Descubra como tecnologias assistivas podem aumentar o acesso ao mercado de trabalho
+                        e promover inclusão para diferentes perfis e necessidades.
+                    </p>
+                    <a href="/trilha/2" class="module-button">Acessar módulo</a>
+                </div>
+            </div>
+
+            <!-- MODULE 3 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h2>Tecnologia com Propósito</h2>
+                    <p>
+                        Veja como a inovação pode ser direcionada para gerar impacto social, ética,
+                        responsabilidade e desenvolvimento humano.
+                    </p>
+                    <a href="/trilha/3" class="module-button">Acessar módulo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-botton">
+            <a class="btn-more-trails" href="/maisTrilhas">Clique aqui para acessar mais Trilhas</a>
+        </div>
+    </section>
+
+    <section class="plans-section">
+        <h1 class="plans-title-section">Nossos planos</h1>
+        <div class="plans-container">
+
+
+            <div class="plan-card plan-white">
+                <h2>Essential</h2>
+                <h3 class="price1">$29</h3>
+                <ul>
+                    <li>Acesso ao módulo básico da trilha de aprendizagem</li>
+                    <li>Certificado digital</li>
+                    <li>IA com reconhecimento de sinais limitado</li>
+                </ul>
+            </div>
+
+
+            <div class="plan-card plan-orange">
+                <h2>Extra</h2>
+                <h3 class="price2">$79</h3>
+                <ul>
+                    <li>Reconhecimento de sinais completo</li>
+                    <li>Tradução em tempo real com precisão aprimorada</li>
+                    <li>Acesso a trilhas adicionais de comunicação inclusiva</li>
+                    <li>Suporte por e-mail e chat (resposta em até 12h)</li>
+                </ul>
+            </div>
+
+
+            <div class="plan-card plan-black">
+                <h2>Deluxe</h2>
+                <h3 class="price3">$149</h3>
+                <ul>
+                    <li>IA avançada (frases, contexto e expressões faciais)</li>
+                    <li>Acesso total a trilhas avançadas e formações extras</li>
+                    <li>Relatórios completos de desempenho e engajamento</li>
+                    <li>Tradução simultânea para voz e texto</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>Contate-nos</h2>
+
+        <form class="contact-form">
+
+            <div class="form-group double">
+                <div> <label>Digite seu nome</label> <input type="text" name="nome" placeholder="Nome" required> </div>
+                <div> <label>&nbsp;</label> <input type="text" name="sobrenome" placeholder="Sobrenome" required> </div>
+            </div>
+            <div class="form-group"> <label>Digite seu e-mail</label> <input type="email" name="email"
+                    placeholder="Exemplo@email.com" required> </div>
+            <div class="form-group"> <label>Digite seu telefone</label> <input type="text" name="telefone"
+                    placeholder="55 11 888999000" required> </div>
+            <div class="form-group"> <label>Escreva sua mensagem</label> <textarea name="mensagem" required></textarea>
+            </div> <button type="submit" class="btn-send">Enviar mensagem</button>
+
+        </form>
+    </section>
+
+    <!--SECTION IA -->
+    <section class="ia-section" id="ia">
+        <h2 class="ia-title">Interaja com a LibrAI</h2>
+        <p class="ia-text">Use gestos manuais para se comunicar com nossa IA em tempo real</p>
+
+        <button id="startButton" class="ia-button">Clique aqui para interagir</button>
+
+        <div id="videoContainer">
+            <img id="video" />
+            <button id="closeButton">✕</button>
+        </div>
+    </section>
+
+</body>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}" alt="Logo LibraAI"
+                width="80">
+        </div>
+
+        <div class="footer-section">
+            <p><strong>E-mail</strong></p>
+            <p>LibraAIServices@gmail.com</p>
+
+            <p><strong>Telefone</strong></p>
+            <p>+55 (11) 99999-8888</p>
+        </div>
+
+        <div class="footer-section">
+            <div class="social-icons">
+                <img class="footer-icons" src="{{ url_for('static', filename='Images/whatsapp-icon.png') }}">
+                <img class="footer-icons" src="{{ url_for('static', filename='Images/instagram-icon.png') }}">
+                <img class="footer-icons" src="{{ url_for('static', filename='Images/linkedin-icon.png') }}">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        Copyright © LibrAI 2024-25. Todos os direitos reservados.
+    </div>
+</footer>
+
+</html>

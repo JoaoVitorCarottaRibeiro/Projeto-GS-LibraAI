@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <title>LibraAI - Conectando Pessoas</title>
+    <link rel="stylesheet" href="../static/css/pagina1.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo Steve" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="#section-image-text">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+    <section>
+        <h1 class="container-title">Conectar pessoas</h1>
+        <div class="container">
+            <img class="container-image" src="{{ url_for('static', filename='Images/Image3.jpg') }}" alt="Imagem 1">
+            <div>
+                <p class="conteiner-text">No centro do futuro do trabalho está a capacidade de conexão, não apenas digital, mas humana. Conectar pessoas significa permitir que cada indivíduo se comunique de maneira plena, independente de limitações físicas ou barreiras linguísticas.</p>
+                <p class="conteiner-text">O nosso projeto nasce exatamente desse propósito: criar uma ponte direta entre pessoas surdas ou mudas e o ambiente profissional, garantindo que elas possam expressar ideias, participar de reuniões, colaborar em equipe e ter voz ativa no espaço de trabalho. Ao utilizar IA para traduzir sinais em tempo real, abrimos portas para interações mais naturais, eliminando ruídos, intermediários e desconfortos. Conectar pessoas é mais do que aproximá-las, é garantir que cada uma tenha espaço para ser ouvida.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

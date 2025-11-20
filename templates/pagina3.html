@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <title>LibraAI - Tecnologia com Propósito</title>
+    <link rel="stylesheet" href="../static/css/pagina3.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo Steve" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="#section-image-text">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+    <section>
+        <h1 class="container-title">Tecnologia com Propósito</h1>
+        <div class="container">
+            <img class="container-image" src="{{ url_for('static', filename='Images/Image5.jpg') }}" alt="Imagem 3">
+            <div>
+                <p class="conteiner-text">A tecnologia só faz sentido quando serve às pessoas, e não o contrário. “Tecnologia com Propósito” é o pilar que define a essência deste projeto: usar inovação para melhorar vidas de forma concreta e significativa. Em vez de focar apenas em desempenho técnico, buscamos criar uma IA que compreenda, respeite e traduza linguagem de sinais com precisão, eficiência e humanidade.</p>
+                <p class="conteiner-text">Isso transforma o ambiente de trabalho em um espaço verdadeiramente acessível, onde a tecnologia não substitui a interação humana, mas a complementa e fortalece. Com propósito, a IA se torna uma aliada na inclusão, permitindo que a evolução tecnológica caminhe lado a lado com a responsabilidade social. Aqui, inovação e empatia se encontram para construir um futuro mais justo.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

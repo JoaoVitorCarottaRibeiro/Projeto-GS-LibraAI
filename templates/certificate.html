@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/certificado.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <title>Certificado</title>
+</head> 
+
+<body>
+    <section class="certificate">
+        <div class="certificate-box">
+            <h1>Certificado de Conclusão</h1>
+            <p>Certificamos que</p>
+
+            <h2>{{ nome_usuario }}</h2>
+
+            <p>
+                concluiu a <strong>Trilha de Aprendizagem</strong> sobre acessibilidade,
+                inclusão e tecnologia aplicada à linguagem de sinais.
+            </p>
+
+            <p class="signature">______________EquipeLibrAI_______________<br><br><br>Equipe do Projeto</p>
+        </div>
+
+        <button class="download-btn" onclick="downloadCertificate()">Baixar Certificado</button>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/maisTrilhas.css') }}">
+    <title>Mais Trilhas</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo LibraAI" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="/login">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+    <section class="trilhas-container">
+        <h2 class="titulo-trilhas">Trilhas de Aprendizado</h2>
+
+        <div class="grid-trilhas">
+
+            <div class="trilha">
+                <h3>Comunicação Inclusiva no Trabalho</h3>
+                <p>Aprenda como empresas podem se comunicar melhor com pessoas surdas e mudas.</p>
+                <a href="/trilha/1" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Introdução à Cultura Surda</h3>
+                <p>Entenda a história, desafios e identidade da comunidade surda no Brasil.</p>
+                <a href="/trilha/2" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Empregabilidade e Acessibilidade</h3>
+                <p>Como preparar ambientes profissionais verdadeiramente acessíveis.</p>
+                <a href="/trilha/3" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Uso de Tecnologia como Ponte</h3>
+                <p>Ferramentas e soluções que aproximam surdos e ouvintes no ambiente de trabalho.</p>
+                <a href="/trilha/4" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Comunicação Visual e Gestual</h3>
+                <p>Como usar elementos visuais para facilitar diálogos com pessoas surdas e mudas.</p>
+                <a href="/trilha/5" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Atitudes Inclusivas no Dia a Dia</h3>
+                <p>Comportamentos simples que fazem grande diferença na inclusão.</p>
+                <a href="/trilha/6" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Desconstruindo Barreiras</h3>
+                <p>Como eliminar barreiras sociais, comunicacionais e emocionais.</p>
+                <a href="/trilha/7" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Inclusão no Atendimento ao Público</h3>
+                <p>Como oferecer atendimento acessível e respeitoso.</p>
+                <a href="/trilha/8" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Legislação e Direitos das Pessoas Surdas</h3>
+                <p>Conheça leis que garantem acessibilidade e comunicação.</p>
+                <a href="/trilha/9" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Empatia e Relações Humanas</h3>
+                <p>Como criar ambientes de trabalho emocionalmente seguros e acolhedores.</p>
+                <a href="/trilha/10" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>Liderança Inclusiva</h3>
+                <p>Desenvolvendo líderes preparados para equipes diversas.</p>
+                <a href="/trilha/11" class="btn-trilha">Começar trilha</a>
+            </div>
+
+            <div class="trilha">
+                <h3>O Futuro do Trabalho Acessível</h3>
+                <p>Como preparar empresas para um futuro mais inclusivo e tecnológico.</p>
+                <a href="/trilha/12" class="btn-trilha">Começar trilha</a>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

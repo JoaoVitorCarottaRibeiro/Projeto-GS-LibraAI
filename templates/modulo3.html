@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraAI - Módulo 3</title>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <link rel="stylesheet" href="../static/css/quiz.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo Steve" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="#section-image-text">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+    <section class="quiz-section">
+        <h1 class="quiz-title">Módulo 3 — Tecnologia com Propósito</h1>
+        <p class="quiz-subtitle">Responda corretamente as 3 perguntas para finalizar a trilha.</p>
+
+        <form id="quiz3">
+
+            <div class="quiz-question">
+                <p>1. O que define tecnologia com propósito?</p>
+                <label><input type="radio" name="q1" value="a"> Criar coisas sem função real</label>
+                <label><input type="radio" name="q1" value="b"> Focar em impacto social</label>
+                <label><input type="radio" name="q1" value="c"> Aumentar lucros empresariais</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Por que o projeto é considerado tecnologia com propósito?</p>
+                <label><input type="radio" name="q2" value="a"> Porque usa servidores grandes</label>
+                <label><input type="radio" name="q2" value="b"> Porque melhora a vida de pessoas com deficiência</label>
+                <label><input type="radio" name="q2" value="c"> Porque usa cores bonitas</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. Qual é o foco social do projeto?</p>
+                <label><input type="radio" name="q3" value="a"> Acessibilidade e inclusão</label>
+                <label><input type="radio" name="q3" value="b"> Entretenimento</label>
+                <label><input type="radio" name="q3" value="c"> Criação de memes</label>
+            </div>
+
+            <button type="button" onclick="submitQuiz(3)" class="submit-quiz-btn">
+                Finalizar Trilha
+            </button>
+
+            <p id="quiz-feedback" class="quiz-feedback"></p>
+        </form>
+    </section>
+
+
+
+</body>
+
+</html>

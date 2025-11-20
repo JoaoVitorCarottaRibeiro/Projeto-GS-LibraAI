@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <title>Login</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}" defer></script>
+</head>
+
+<body>
+    <section class="login-container">
+        <div class="login-box">
+
+            <div class="login-form">
+                <h2>Log In</h2>
+                <p class="subtitle">Bem-vindo de volta! Entre com seus dados.</p>
+
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Seu email">
+
+                <label>Senha</label>
+                <input type="password" id="senha" placeholder="Sua senha">
+
+                <button class="btn-login" id="loginBtn">Login</button>
+
+                <p class="signup-text">
+                    Não tem uma conta?
+                    <a href="/signup">Cadastre-se</a>
+                </p>
+            </div>
+
+            <div class="login-image">
+                <img src="{{ url_for('static', filename='Images/login-photo.jpg') }}" alt="Login Image">
+            </div>
+
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+
+</html>

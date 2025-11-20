@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <title>LibraAI - Ampliando Oportunidades</title>
+    <link rel="stylesheet" href="../static/css/pagina2.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo Steve" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="#section-image-text">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+     <section>
+        <h1 class="container-title">Conectar pessoas</h1>
+        <div class="container">
+            <img class="container-image" src="{{ url_for('static', filename='Images/Image4.jpg') }}" alt="Imagem 2">
+            <div>
+                <p class="conteiner-text">O futuro pertence a quem tem acesso, e acesso só existe quando há inclusão. Ampliar oportunidades significa oferecer às pessoas surdas e mudas as mesmas condições de participação que qualquer outro profissional possui. Por muito tempo, a falta de acessibilidade em comunicação limitou carreiras brilhantes, talentos subestimados e possibilidades que nunca chegaram a acontecer.</p>
+                <p class="conteiner-text">Com este projeto, buscamos transformar esse cenário. A IA se torna uma ferramenta libertadora, permitindo que cada pessoa se comunique sem barreiras e, assim, possa assumir novos desafios, conquistar posições de liderança e integrar equipes diversas com autonomia. Ampliar oportunidades não é apenas abrir portas, é garantir que essas portas permaneçam abertas para o crescimento, o reconhecimento e o protagonismo de todos.</p>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

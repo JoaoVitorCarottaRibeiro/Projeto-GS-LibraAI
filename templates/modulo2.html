@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraAI - Módulo 2</title>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <link rel="stylesheet" href="../static/css/quiz.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo Steve" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="#section-image-text">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+    <section class="quiz-section">
+        <h1 class="quiz-title">Módulo 2 — Ampliar Oportunidades</h1>
+        <p class="quiz-subtitle">Responda corretamente as 3 perguntas para avançar.</p>
+
+        <form id="quiz2">
+
+            <div class="quiz-question">
+                <p>1. O que significa ampliar oportunidades?</p>
+                <label><input type="radio" name="q1" value="a"> Dar vantagens apenas a empresas</label>
+                <label><input type="radio" name="q1" value="b"> Garantir acesso justo ao mercado</label>
+                <label><input type="radio" name="q1" value="c"> Criar vagas aleatórias</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Como o projeto amplia oportunidades?</p>
+                <label><input type="radio" name="q2" value="a"> Instalando máquinas</label>
+                <label><input type="radio" name="q2" value="b"> Traduzindo Libras em tempo real</label>
+                <label><input type="radio" name="q2" value="c"> Criando redes sociais</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. A quem o projeto beneficia diretamente?</p>
+                <label><input type="radio" name="q3" value="a"> Pessoas surdas e mudas</label>
+                <label><input type="radio" name="q3" value="b"> Somente gestores</label>
+                <label><input type="radio" name="q3" value="c"> Somente programadores</label>
+            </div>
+
+            <button type="button" onclick="submitQuiz(2)" class="submit-quiz-btn">
+                Enviar respostas
+            </button>
+
+            <p id="quiz-feedback" class="quiz-feedback"></p>
+        </form>
+    </section>
+
+
+</body>
+
+</html>

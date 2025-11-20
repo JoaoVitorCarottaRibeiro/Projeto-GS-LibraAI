@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/quiz.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>LibraAI - Módulo 1</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo Steve" width="80">
+            </a>
+        </div>
+
+        <nav class="menu-links">
+            <a href="#section-image-text">Login</a>
+            <a href="#menu">Trilha</a>
+            <a href="#menu">Planos</a>
+            <a href="#menu">Contato</a>
+        </nav>
+    </header>
+
+    <section class="quiz-section">
+        <h1 class="quiz-title">Módulo 1 — Conectar Pessoas</h1>
+        <p class="quiz-subtitle">Responda corretamente as 3 perguntas para avançar.</p>
+
+        <form id="quiz1">
+
+            <div class="quiz-question">
+                <p>1. O que significa “conectar pessoas” dentro do futuro do trabalho?</p>
+                <label><input type="radio" name="q1" value="a"> Apenas comunicação digital</label>
+                <label><input type="radio" name="q1" value="b"> Comunicação acessível sem barreiras</label>
+                <label><input type="radio" name="q1" value="c"> Usar redes sociais no trabalho</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Qual é a principal função do projeto?</p>
+                <label><input type="radio" name="q2" value="a"> Ensinar pessoas a programar</label>
+                <label><input type="radio" name="q2" value="b"> Facilitar reuniões presenciais</label>
+                <label><input type="radio" name="q2" value="c"> Interpretar Libras com IA</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. Qual barreira o projeto ajuda a reduzir?</p>
+                <label><input type="radio" name="q3" value="a"> Barreiras linguísticas</label>
+                <label><input type="radio" name="q3" value="b"> Barreiras financeiras</label>
+                <label><input type="radio" name="q3" value="c"> Barreiras geográficas</label>
+            </div>
+
+            <button type="button" onclick="submitQuiz(1)" class="submit-quiz-btn">
+                Enviar respostas
+            </button>
+
+            <p id="quiz-feedback" class="quiz-feedback"></p>
+        </form>
+    </section>
+
+
+</body>
+
+</html>
