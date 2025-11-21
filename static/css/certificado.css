@@ -1,14 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
 .certificate {
+    width: 100%; 
     text-align: center;
-    padding: 50px;
+    padding: 50px 20px;
+    box-sizing: border-box;
 }
 
 .certificate-box {
-    width: 80%;
-    margin: auto;
+    width: 650px; 
+    max-width: 100%; 
+    margin: auto; 
     padding: 40px;
     border: 3px solid orange;
     border-radius: 15px;
+    box-sizing: border-box; 
 }
 
 .certificate-box h1 {
@@ -22,9 +37,25 @@
     color: #333;
 }
 
-.signature {
+.signature-container {
     margin-top: 50px;
     font-style: italic;
+    text-align: center;
+    display: block;
+}
+
+.signature-line {
+    display: inline-block;
+    border-bottom: 1px solid #333; 
+    padding: 0 50px 2px 50px; 
+    font-style: normal;
+    font-size: 0.9rem;
+    white-space: nowrap; 
+}
+
+.project-team {
+    display: block;
+    margin-top: 5px;
 }
 
 .download-btn {
@@ -40,4 +71,53 @@
 
 .download-btn:hover {
     background: #d77c00;
+}
+
+@media (max-width: 768px) {
+    .certificate {
+        padding: 40px 15px;
+    }
+    
+    .certificate-box {
+        padding: 30px;
+    }
+    
+    .certificate-box h1 {
+        font-size: 1.8rem;
+    }
+
+    .certificate-box h2 {
+        font-size: 1.6rem;
+    }
+    
+    .signature-line {
+        padding: 0 25px 2px 25px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .certificate {
+        padding: 20px 10px;
+    }
+    
+    .certificate-box {
+        padding: 25px 15px;
+    }
+
+    .certificate-box h1 {
+        font-size: 1.5rem;
+    }
+    
+    .certificate-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .certificate-box p {
+        font-size: 0.95rem;
+    }
+
+    .signature-line {
+        padding: 0 10px 2px 10px; 
+        font-size: 0.8rem;
+    }
 }

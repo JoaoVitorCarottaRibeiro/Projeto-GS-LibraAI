@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibrAI</title>
     <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
@@ -21,9 +22,9 @@
 
         <nav class="menu-links">
             <a href="/login">Login</a>
-            <a href="#menu">Trilha</a>
-            <a href="#menu">Planos</a>
-            <a href="#menu">Contato</a>
+            <a href="#trilha">Trilha</a>
+            <a href="#planos">Planos</a>
+            <a href="#contatos">Contato</a>
         </nav>
     </header>
 
@@ -96,15 +97,14 @@
         </div>
     </section>
 
-    <section class="learning-track">
+    <section class="learning-track" id="trilha">
 
         <h1 class="track-title">Trilha de Aprendizagem</h1>
         <p class="track-description">
             Explore conteúdos desenvolvidos para ampliar sua compreensão sobre acessibilidade,
             inclusão e o papel da tecnologia no futuro do trabalho.
         </p>
-
-        <!-- PROGRESS BAR -->
+        
         <div class="progress-container">
             <p>Seu progresso</p>
             <div class="progress-bar">
@@ -112,10 +112,8 @@
             </div>
         </div>
 
-        <!-- TIMELINE -->
         <div class="timeline">
 
-            <!-- MODULE 1 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -127,8 +125,7 @@
                     <a href="/trilha/1" class="module-button">Acessar módulo</a>
                 </div>
             </div>
-
-            <!-- MODULE 2 -->
+           
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -140,8 +137,7 @@
                     <a href="/trilha/2" class="module-button">Acessar módulo</a>
                 </div>
             </div>
-
-            <!-- MODULE 3 -->
+            
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -160,7 +156,7 @@
         </div>
     </section>
 
-    <section class="plans-section">
+    <section class="plans-section" id="planos">
         <h1 class="plans-title-section">Nossos planos</h1>
         <div class="plans-container">
 
@@ -202,14 +198,13 @@
         </div>
     </section>
 
-    <section class="contact-section">
+    <section class="contact-section" id="contatos">
         <h2>Contate-nos</h2>
 
         <form class="contact-form">
 
-            <div class="form-group double">
+            <div class="form-group">
                 <div> <label>Digite seu nome</label> <input type="text" name="nome" placeholder="Nome" required> </div>
-                <div> <label>&nbsp;</label> <input type="text" name="sobrenome" placeholder="Sobrenome" required> </div>
             </div>
             <div class="form-group"> <label>Digite seu e-mail</label> <input type="email" name="email"
                     placeholder="Exemplo@email.com" required> </div>
@@ -221,7 +216,6 @@
         </form>
     </section>
 
-    <!--SECTION IA -->
     <section class="ia-section" id="ia">
         <h2 class="ia-title">Interaja com a LibrAI</h2>
         <p class="ia-text">Use gestos manuais para se comunicar com nossa IA em tempo real</p>
@@ -234,37 +228,36 @@
         </div>
     </section>
 
-</body>
+    <footer class="footer">
+        <div class="footer-container">
 
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}" alt="Logo LibraAI"
-                width="80">
-        </div>
-
-        <div class="footer-section">
-            <p><strong>E-mail</strong></p>
-            <p>LibraAIServices@gmail.com</p>
-
-            <p><strong>Telefone</strong></p>
-            <p>+55 (11) 99999-8888</p>
-        </div>
-
-        <div class="footer-section">
-            <div class="social-icons">
-                <img class="footer-icons" src="{{ url_for('static', filename='Images/whatsapp-icon.png') }}">
-                <img class="footer-icons" src="{{ url_for('static', filename='Images/instagram-icon.png') }}">
-                <img class="footer-icons" src="{{ url_for('static', filename='Images/linkedin-icon.png') }}">
+            <div class="footer-logo">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo LibraAI" width="80">
             </div>
+
+            <div class="footer-section">
+                <p><strong>E-mail</strong></p>
+                <p>LibraAIServices@gmail.com</p>
+
+                <p><strong>Telefone</strong></p>
+                <p>+55 (11) 99999-8888</p>
+            </div>
+
+            <div class="footer-section">
+                <div class="social-icons">
+                    <img class="footer-icons" src="{{ url_for('static', filename='Images/whatsapp-icon.png') }}">
+                    <img class="footer-icons" src="{{ url_for('static', filename='Images/instagram-icon.png') }}">
+                    <img class="footer-icons" src="{{ url_for('static', filename='Images/linkedin-icon.png') }}">
+                </div>
+            </div>
+
         </div>
 
-    </div>
+        <div class="footer-bottom">
+            Copyright © LibrAI 2024-25. Todos os direitos reservados.
+        </div>
+    </footer>
 
-    <div class="footer-bottom">
-        Copyright © LibrAI 2024-25. Todos os direitos reservados.
-    </div>
-</footer>
-
+</body>
 </html>

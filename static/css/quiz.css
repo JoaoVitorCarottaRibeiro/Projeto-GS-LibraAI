@@ -21,11 +21,17 @@ header {
     width: 60px;
 }
 
+.menu-links {
+    display: flex; 
+    align-items: center;
+}
+
 .menu-links a {
     margin-left: 20px;
     text-decoration: none;
     color: black;
     font-weight: bold;
+    font-size: 1.2rem; 
 }
 
 .menu-links a:hover {
@@ -36,6 +42,8 @@ header {
     max-width: 700px;
     margin: 50px auto;
     text-align: center;
+    padding: 0 20px; 
+    box-sizing: border-box;
 }
 
 .quiz-title {
@@ -93,3 +101,84 @@ input[type="radio"] {
     accent-color: orange;
 }
 
+@media (max-width: 1024px) {
+    
+    header {
+        padding: 15px 20px;
+        gap: 20px; 
+    }
+
+    .menu-links {
+        gap: 15px;
+        flex-wrap: nowrap;
+    }
+    
+    .menu-links a {
+        white-space: nowrap; 
+        font-size: 1.1rem; 
+        margin-left: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+   
+    header {
+        gap: 10px; 
+    }
+
+    .menu-links {
+        gap: 10px;
+    }
+
+    .menu-links a {
+        font-size: 0.9rem;
+    }
+
+   
+    .quiz-title {
+        font-size: 1.5rem;
+    }
+
+    .quiz-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .quiz-question {
+        padding: 15px;
+    }
+
+    .quiz-question p {
+        font-size: 0.95rem; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    /* Header */
+    header {
+        gap: 8px;
+    }
+
+    .menu-links {
+        gap: 12px;
+    }
+
+    .menu-links a {
+        font-size: 0.9rem;
+    }
+    
+    .quiz-section {
+        margin: 30px auto;
+        padding: 0 10px;
+    }
+
+    .quiz-title {
+        font-size: 1.3rem;
+    }
+    
+    .submit-quiz-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}

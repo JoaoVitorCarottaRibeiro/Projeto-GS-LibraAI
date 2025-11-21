@@ -8,7 +8,7 @@ document.getElementById('startButton').onclick = function () {
     this.style.display = 'none';
 };
 
-// Fechar câmera e resetar IA
+
 document.getElementById('closeButton').onclick = function () {
     const video = document.getElementById('video');
     const container = document.getElementById('videoContainer');
@@ -22,23 +22,23 @@ document.getElementById('closeButton').onclick = function () {
     fetch('/reset_text');
 };
 
-// Leitura do progresso salvo
+
 let progress = localStorage.getItem("trackProgress") || 0;
 
-// Atualiza barra nos módulos e na trilha
+
 document.addEventListener("DOMContentLoaded", () => {
     const fill = document.querySelector(".progress-fill");
     if (fill) fill.style.width = progress + "%";
 });
 
-// Avança módulo
+
 function goNextModule(next) {
     if (next === 2) updateProgress(33);
     if (next === 3) updateProgress(66);
     window.location.href = `/trilha/${next}`;
 }
 
-// Finaliza trilha
+
 function finishTrack() {
     updateProgress(100);
     window.location.href = "/trilha/certificado";
@@ -99,5 +99,5 @@ function submitQuiz(module) {
         setTimeout(() => window.location.href = "/trilha/certificado", 1500);
     }
 }
-
+    
 

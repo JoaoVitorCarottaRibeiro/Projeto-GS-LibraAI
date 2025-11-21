@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/certificado.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
     <title>Certificado</title>
-</head> 
+</head>
 
 <body>
     <section class="certificate">
@@ -23,7 +23,12 @@
                 inclusão e tecnologia aplicada à linguagem de sinais.
             </p>
 
-            <p class="signature">______________EquipeLibrAI_______________<br><br><br>Equipe do Projeto</p>
+            <p class="signature-container">
+                <span class="signature-line">EquipeLibrAI</span>
+                <br><br>
+                <span class="project-team">Equipe do Projeto</span>
+            </p>
+
         </div>
 
         <button class="download-btn" onclick="downloadCertificate()">Baixar Certificado</button>
