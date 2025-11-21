@@ -613,6 +613,12 @@ textarea {
     height: 35px;
 }
 
+.footer-section p.no-link {
+    pointer-events: none;
+    color: white;
+    text-decoration: none;
+}
+
 .social-icons {
     display: flex;
     gap: 20px;

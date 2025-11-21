@@ -16,7 +16,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const container = document.getElementById("videoContainer");
 
         try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+            const constraints = {
+                video: {
+                    width: { ideal: 640 },
+                    height: { ideal: 480 },
+                    facingMode: "user" // câmera frontal
+                },
+                audio: false
+            };
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
             videoElement.srcObject = stream;
             container.style.display = "block";
             startButton.style.display = "none";
@@ -61,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         camera = new Camera(videoElement, {
             onFrame: async () => {
+                if (!streaming) return;
                 await hands.send({ image: videoElement });
                 resizeCanvas();
             },
@@ -73,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
             camera.start();
         };
 
+        // Redimensionar canvas no resize da tela
         window.addEventListener("resize", resizeCanvas);
+        setTimeout(resizeCanvas, 500); // fallback para celulares lentos
     }
 
     function resizeCanvas() {
