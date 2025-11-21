@@ -216,35 +216,95 @@
     </section>
 
     <section class="ia-section" id="ia">
+        <style>
+            #cameraWrapper {
+                position: relative;
+                width: 100%;
+                max-width: 640px;
+                margin: auto;
+            }
+
+            #userCamera {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+                background: #000;
+                border: 1px solid #ddd;
+            }
+
+            #overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                height: 100% !important;
+                pointer-events: none;
+            }
+
+            .recognized-box {
+                margin-top: 12px;
+                background: #fafafa;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+            }
+
+            #recognizedText {
+                min-height: 32px;
+                margin-top: 6px;
+            }
+
+            .btn-row {
+                margin-top: 12px;
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .btn-row button {
+                padding: 8px 14px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+
+            #closeButton {
+                background: orange;
+                color: white;
+            }
+
+            #resetButton {
+                background:orange;
+                color: white;
+                border: none;
+            }
+        </style>
+
         <h2 class="ia-title">Interaja com a LibrAI</h2>
         <p class="ia-text">Use gestos manuais para se comunicar com nossa IA em tempo real</p>
 
         <button id="startButton" class="ia-button">Clique aqui para interagir</button>
 
-        <div id="videoContainer" style="display:none; margin-top:16px;">
-            <div id="cameraWrapper" style="position:relative; width:100%; max-width:640px; margin:auto;">
-                <video id="userCamera" autoplay playsinline
-                    style="width:100%; height:auto; display:block; border-radius:12px; background:#000; border:1px solid #ddd;"></video>
-                <canvas id="overlay"
-                    style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;"></canvas>
+        <div id="videoContainer" style="display:none; margin-top: 16px;">
+
+            
+            <div id="cameraWrapper">
+                <video id="userCamera" autoplay playsinline></video>
+                <canvas id="overlay"></canvas>
             </div>
 
-            <div class="recognized-box"
-                style="margin-top:12px; background:#fafafa; padding:10px; border-radius:8px; border:1px solid #ccc;">
+            
+            <div class="recognized-box">
                 <strong>Texto reconhecido:</strong>
-                <div id="recognizedText" style="min-height:32px; margin-top:6px;"></div>
+                <div id="recognizedText"></div>
             </div>
 
-            <div class="btn-row" style="margin-top:12px; display:flex; gap:10px; justify-content:center;">
-                <button id="closeButton"
-                    style="background:orange; color:white; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center;">X</button>
-                <button id="resetButton"
-                    style="background:orange; color:white; border:none; padding:8px 14px; border-radius:8px; cursor:pointer;">Resetar
-                    texto</button>
+            <div class="btn-row">
+                <button id="closeButton">X</button>
+                <button id="resetButton">Resetar texto</button>
             </div>
         </div>
     </section>
-
 
 
 
@@ -261,7 +321,7 @@
                 <p>LibraAIServices@gmail.com</p>
 
                 <p><strong>Telefone</strong></p>
-                <p class="no-link">+55 (11) 99999-8888</p>
+                <p>+55 (11) 99999-8888</p>
             </div>
 
             <div class="footer-section">
@@ -279,10 +339,12 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 
 </body>
 

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let camera = null;
     let streaming = false;
-    let sendIntervalMs = 300;
+    let sendIntervalMs = 200;
     let lastSent = 0;
 
     const startButton = document.getElementById("startButton");
@@ -12,20 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const overlay = document.getElementById("overlay");
     const recognizedDiv = document.getElementById("recognizedText");
 
+    // BOTÃO DE INICIAR
     startButton.onclick = async function () {
         const container = document.getElementById("videoContainer");
 
         try {
-            const constraints = {
-                video: {
-                    width: { ideal: 640 },
-                    height: { ideal: 480 },
-                    facingMode: "user" // câmera frontal
-                },
-                audio: false
-            };
-            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             videoElement.srcObject = stream;
+
             container.style.display = "block";
             startButton.style.display = "none";
             streaming = true;
@@ -36,26 +30,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // BOTÃO DE FECHAR
     closeButton.onclick = function () {
         streaming = false;
+
         const stream = videoElement.srcObject;
         if (stream) stream.getTracks().forEach(t => t.stop());
 
         document.getElementById("videoContainer").style.display = "none";
         startButton.style.display = "inline";
 
-        fetch("/reset_text").then(() => recognizedDiv.textContent = "");
+        fetch("/reset_text").then(() => {
+            recognizedDiv.textContent = "";
+        });
     };
 
+    // BOTÃO DE RESETAR TEXTO
     resetButton.onclick = function () {
         fetch("/reset_text")
             .then(res => res.json())
             .then(j => { recognizedDiv.textContent = j.text || ""; });
     };
 
+    // INICIAR MEDIAPIPE
     function initHands() {
         const hands = new Hands({
-            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+            locateFile: (file) =>
+                `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
         });
 
         hands.setOptions({
@@ -69,60 +70,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
         camera = new Camera(videoElement, {
             onFrame: async () => {
-            
-                if (streaming) {
-                    await hands.send({ image: videoElement });
-                }
+                await hands.send({ image: videoElement });
                 resizeCanvas();
-            },
-            width: 640,
-            height: 480
-        });
-
-        videoElement.addEventListener('play', () => {
-            if (streaming) {
-                camera.start();
-                console.log("MediaPipe Camera Iniciada.");
             }
         });
-        
-        
+
         videoElement.onloadedmetadata = function () {
             resizeCanvas();
+            camera.start();
         };
 
-       
         window.addEventListener("resize", resizeCanvas);
-        setTimeout(resizeCanvas, 500);
     }
 
+    // RESIZE RESPONSIVO
     function resizeCanvas() {
-        if (!videoElement.videoWidth || !videoElement.videoHeight) return;
+        const video = videoElement;
+        const canvas = overlay;
 
-        overlay.width = videoElement.videoWidth;
-        overlay.height = videoElement.videoHeight;
+        if (!video.videoWidth || !video.videoHeight) return;
 
-        const rect = videoElement.getBoundingClientRect();
-        overlay.style.width = rect.width + "px";
-        overlay.style.height = rect.height + "px";
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        const rect = video.getBoundingClientRect();
+        canvas.style.width = rect.width + "px";
+        canvas.style.height = rect.height + "px";
     }
 
+    // PROCESSO DO MEDIAPIPE
     async function onResults(results) {
-        const ctx = overlay.getContext("2d");
-        ctx.clearRect(0, 0, overlay.width, overlay.height);
+        const canvas = overlay;
+        const ctx = canvas.getContext("2d");
 
-        if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
+            return;
+        }
 
         const lm = results.multiHandLandmarks[0];
+
         drawConnectors(ctx, lm, HAND_CONNECTIONS, { color: "#00FF00", lineWidth: 2 });
         drawLandmarks(ctx, lm, { color: "#FF0000", lineWidth: 1 });
 
         const flat = lm.flatMap(p => [p.x, p.y, p.z ?? 0]);
+
         const xs = lm.map(p => p.x);
         const ys = lm.map(p => p.y);
-        const hand_area = (Math.max(...xs) - Math.min(...xs)) * (Math.max(...ys) - Math.min(...ys));
+        const hand_area =
+            (Math.max(...xs) - Math.min(...xs)) *
+            (Math.max(...ys) - Math.min(...ys));
 
         const now = Date.now();
+
         if (now - lastSent < sendIntervalMs) return;
         lastSent = now;
 
@@ -134,10 +135,13 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const j = await resp.json();
-            if (j.text !== undefined) recognizedDiv.textContent = j.text;
+            if (j.text !== undefined) {
+                recognizedDiv.textContent = j.text;
+            }
+
         } catch (err) {
             console.error("Erro ao enviar landmarks:", err);
         }
     }
 
-});
+}); // FIM DO DOMContentLoaded
