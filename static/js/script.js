@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let camera = null;
     let streaming = false;
-    let sendIntervalMs = 200;
+    let sendIntervalMs = 300;
     let lastSent = 0;
 
     const startButton = document.getElementById("startButton");
@@ -69,22 +69,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         camera = new Camera(videoElement, {
             onFrame: async () => {
-                if (!streaming) return;
-                await hands.send({ image: videoElement });
+            
+                if (streaming) {
+                    await hands.send({ image: videoElement });
+                }
                 resizeCanvas();
             },
             width: 640,
             height: 480
         });
 
+        videoElement.addEventListener('play', () => {
+            if (streaming) {
+                camera.start();
+                console.log("MediaPipe Camera Iniciada.");
+            }
+        });
+        
+        
         videoElement.onloadedmetadata = function () {
             resizeCanvas();
-            camera.start();
         };
 
-        // Redimensionar canvas no resize da tela
+       
         window.addEventListener("resize", resizeCanvas);
-        setTimeout(resizeCanvas, 500); // fallback para celulares lentos
+        setTimeout(resizeCanvas, 500);
     }
 
     function resizeCanvas() {
