@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibrAI</title>
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
@@ -217,19 +216,97 @@
     </section>
 
     <section class="ia-section" id="ia">
+        <style>
+            #cameraWrapper {
+                position: relative;
+                width: 100%;
+                max-width: 640px;
+                margin: auto;
+            }
+
+            #userCamera {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+                background: #000;
+                border: 1px solid #ddd;
+            }
+
+            #overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                height: 100% !important;
+                pointer-events: none;
+            }
+
+            .recognized-box {
+                margin-top: 12px;
+                background: #fafafa;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+            }
+
+            #recognizedText {
+                min-height: 32px;
+                margin-top: 6px;
+            }
+
+            .btn-row {
+                margin-top: 12px;
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .btn-row button {
+                padding: 8px 14px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+
+            #closeButton {
+                background: orange;
+                color: white;
+            }
+
+            #resetButton {
+                background:orange;
+                color: white;
+                border: none;
+            }
+        </style>
+
         <h2 class="ia-title">Interaja com a LibrAI</h2>
         <p class="ia-text">Use gestos manuais para se comunicar com nossa IA em tempo real</p>
 
         <button id="startButton" class="ia-button">Clique aqui para interagir</button>
 
-        <div id="videoContainer" style="display:none;">
-            <video id="userCamera" autoplay></video>
+        <div id="videoContainer" style="display:none; margin-top: 16px;">
 
-            <p id="recognizedText" class="recognized-output"></p>
+            
+            <div id="cameraWrapper">
+                <video id="userCamera" autoplay playsinline></video>
+                <canvas id="overlay"></canvas>
+            </div>
 
-            <button id="closeButton">✕</button>
+            
+            <div class="recognized-box">
+                <strong>Texto reconhecido:</strong>
+                <div id="recognizedText"></div>
+            </div>
+
+            <div class="btn-row">
+                <button id="closeButton">X</button>
+                <button id="resetButton">Resetar texto</button>
+            </div>
         </div>
     </section>
+
+
 
     <footer class="footer">
         <div class="footer-container">
@@ -261,6 +338,13 @@
             Copyright © LibrAI 2024-25. Todos os direitos reservados.
         </div>
     </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 
 </body>
 
