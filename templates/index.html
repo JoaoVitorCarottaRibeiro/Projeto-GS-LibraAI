@@ -104,7 +104,7 @@
             Explore conteúdos desenvolvidos para ampliar sua compreensão sobre acessibilidade,
             inclusão e o papel da tecnologia no futuro do trabalho.
         </p>
-        
+
         <div class="progress-container">
             <p>Seu progresso</p>
             <div class="progress-bar">
@@ -125,7 +125,7 @@
                     <a href="/trilha/1" class="module-button">Acessar módulo</a>
                 </div>
             </div>
-           
+
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -137,7 +137,7 @@
                     <a href="/trilha/2" class="module-button">Acessar módulo</a>
                 </div>
             </div>
-            
+
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -222,8 +222,11 @@
 
         <button id="startButton" class="ia-button">Clique aqui para interagir</button>
 
-        <div id="videoContainer">
-            <img id="video" />
+        <div id="videoContainer" style="display:none;">
+            <video id="userCamera" autoplay></video>
+
+            <p id="recognizedText" class="recognized-output"></p>
+
             <button id="closeButton">✕</button>
         </div>
     </section>
@@ -260,4 +263,5 @@
     </footer>
 
 </body>
+
 </html>

@@ -1,103 +1,65 @@
-document.getElementById('startButton').onclick = function () {
-    const video = document.getElementById('video');
-    const container = document.getElementById('videoContainer');
+let streaming = false;
+let cameraStream = null;
 
-    video.src = '/video_feed';
-    container.style.display = 'block';
+document.getElementById("startButton").onclick = async function () {
+    const container = document.getElementById("videoContainer");
+    const video = document.getElementById("userCamera");
+    const output = document.getElementById("recognizedText");
 
-    this.style.display = 'none';
+    try {
+        cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = cameraStream;
+        container.style.display = "block";
+        this.style.display = "none";
+        streaming = true;
+
+        sendFrames();
+    } catch (err) {
+        alert("Erro ao acessar a câmera: " + err);
+    }
 };
 
 
-document.getElementById('closeButton').onclick = function () {
-    const video = document.getElementById('video');
-    const container = document.getElementById('videoContainer');
+document.getElementById("closeButton").onclick = function () {
+    streaming = false;
 
-    video.src = '';
-    container.style.display = 'none';
+    if (cameraStream) {
+        cameraStream.getTracks().forEach(t => t.stop());
+    }
 
-    document.getElementById('startButton').style.display = 'inline';
+    document.getElementById("videoContainer").style.display = "none";
+    document.getElementById("startButton").style.display = "inline";
 
-    fetch('/stop_camera');
-    fetch('/reset_text');
+    fetch("/reset_text");
 };
 
 
-let progress = localStorage.getItem("trackProgress") || 0;
+async function sendFrames() {
+    const video = document.getElementById("userCamera");
+    const canvas = document.createElement("canvas");
 
+    const output = document.getElementById("recognizedText");
 
-document.addEventListener("DOMContentLoaded", () => {
-    const fill = document.querySelector(".progress-fill");
-    if (fill) fill.style.width = progress + "%";
-});
+    while (streaming) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
 
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-function goNextModule(next) {
-    if (next === 2) updateProgress(33);
-    if (next === 3) updateProgress(66);
-    window.location.href = `/trilha/${next}`;
-}
+        let dataURL = canvas.toDataURL("image/jpeg");
 
+        let response = await fetch("/process_frame", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ frame: dataURL })
+        });
 
-function finishTrack() {
-    updateProgress(100);
-    window.location.href = "/trilha/certificado";
-}
+        let result = await response.json();
+        if (result.text !== undefined) {
+            output.textContent = result.text;
+        }
 
-function updateProgress(value) {
-    localStorage.setItem("trackProgress", value);
-}
-
-
-function downloadCertificate() {
-    alert("Função de download pode ser integrada com html2canvas ou conversão em PDF.");
-}
-
-function submitQuiz(module) {
-    const form = document.getElementById(`quiz${module}`);
-    const feedback = document.getElementById("quiz-feedback");
-
-    const answers = {
-        1: ["b", "c", "a"],
-        2: ["b", "b", "a"],
-        3: ["b", "b", "a"]
-    };
-
-    const userAnswers = [
-        form.q1.value,
-        form.q2.value,
-        form.q3.value
-    ];
-
-    if (userAnswers.includes("")) {
-        feedback.style.color = "red";
-        feedback.textContent = "Responda todas as perguntas!";
-        return;
-    }
-
-    const correct = userAnswers.every((ans, i) => ans === answers[module][i]);
-
-    if (!correct) {
-        feedback.style.color = "red";
-        feedback.textContent = "Você errou! Revise o conteúdo e tente novamente.";
-        return;
-    }
-
-    feedback.style.color = "green";
-    feedback.textContent = "Parabéns! Você acertou tudo!";
-
-    if (module === 1) {
-        localStorage.setItem("trackProgress", 33);
-        setTimeout(() => window.location.href = "/trilha/2", 1500);
-    }
-    if (module === 2) {
-        localStorage.setItem("trackProgress", 66);
-        setTimeout(() => window.location.href = "/trilha/3", 1500);
-    }
-    if (module === 3) {
-        localStorage.setItem("trackProgress", 100);
-        setTimeout(() => window.location.href = "/trilha/certificado", 1500);
+        await new Promise(r => setTimeout(r, 200)); // 5 FPS
     }
 }
-    
-
