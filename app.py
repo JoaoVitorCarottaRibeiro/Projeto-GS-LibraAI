@@ -257,19 +257,25 @@ def upload_foto():
         return redirect(url_for("home"))
 
     filename = secure_filename(photo.filename)
-    path = os.path.join("static/uploads", filename)
+
+    upload_folder = os.path.join(app.root_path, "static", "uploads")
+    os.makedirs(upload_folder, exist_ok=True)
+
+    path = os.path.join(upload_folder, filename)
     photo.save(path)
+
+    db_path = os.path.join("static", "uploads", filename)
 
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute(
         "UPDATE users SET foto_perfil = ? WHERE id = ?",
-        (path, session["user_id"])
+        (db_path, session["user_id"])
     )
     conn.commit()
     conn.close()
 
-    session["user_photo"] = path
+    session["user_photo"] = db_path
     return redirect(url_for("home"))
 
 @app.route("/ranking")
