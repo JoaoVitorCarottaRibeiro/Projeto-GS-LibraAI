@@ -1,17 +1,24 @@
-document.getElementById("signupBtn").addEventListener("click", () => {
-    const data = {
-        nome: document.getElementById("nome").value.trim(),
-        idade: document.getElementById("idade").value.trim(),
-        profissao: document.getElementById("profissao").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        senha: document.getElementById("senha").value.trim()
+document.getElementById("signupBtn").addEventListener("click", async () => {
+    const payload = {
+        nome: document.getElementById("nome").value,
+        idade: document.getElementById("idade").value,
+        profissao: document.getElementById("profissao").value,
+        email: document.getElementById("email").value,
+        senha: document.getElementById("senha").value
     };
 
-    if (!data.nome || !data.email || !data.senha) {
-        alert("Preencha ao menos nome, email e senha.");
-        return;
-    }
+    const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    });
 
-    alert("Cadastro realizado (simulado).");
-    window.location.href = "/login";
+    const data = await res.json();
+
+    if (data.success) {
+        alert("Conta criada com sucesso!");
+        window.location.href = "/login";
+    } else {
+        alert(data.error || "Erro ao cadastrar");
+    }
 });

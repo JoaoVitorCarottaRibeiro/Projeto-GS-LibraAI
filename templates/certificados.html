@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/mural_certificados.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <title>Certificados</title>
+</head>
+
+<header>
+    <div class="logo">
+        <a href="{{ url_for('home') }}">
+            <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}" alt="Logo Steve"
+                width="80">
+        </a>
+    </div>
+</header>
+
+<body>
+    <section class="certificados-page">
+
+        <div class="titulo-area">
+            <h1>Seus Certificados</h1>
+            <p>Conquistas obtidas na sua jornada de aprendizado</p>
+        </div>
+
+
+        <div class="certificados-grid">
+
+            <a href="{{ url_for('certificate') }}" class="cert-card">
+
+
+                <div class="mini-certificate">
+
+                    <h3>Certificado de Conclusão</h3>
+                    <p>Certificamos que</p>
+
+                    <h4>{{ nome_usuario }}</h4>
+
+                    <p class="mini-desc">
+                        concluiu a <strong>Trilha de Aprendizagem</strong>
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+</body>
+
+</html>

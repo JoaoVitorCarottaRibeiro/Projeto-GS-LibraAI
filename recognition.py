@@ -10,6 +10,11 @@ current_text = ""
 
 _buffer = deque(maxlen=8)
 
+_last_added = None
+_last_time = 0
+COOLDOWN = 2.0
+
+
 mp_hands = mp.solutions.hands
 mp_draw = mp.solutions.drawing_utils
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1)

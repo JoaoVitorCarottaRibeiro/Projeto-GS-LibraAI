@@ -20,11 +20,22 @@
         </div>
 
         <nav class="menu-links">
-            <a href="/login">Login</a>
-            <a href="#trilha">Trilha</a>
+            {% if session.get("user_id") %}
+            
+            <a href="/home">Home</a>
+            <a href="/trilha">Trilha</a>
+            <a href="#ia">IA</a>
+            <a href="/logout">Sair</a>
+
+            {% else %}
+            
             <a href="#planos">Planos</a>
             <a href="#contatos">Contato</a>
+
+            <a class="loginBTN" href="/login">Login</a>
+            {% endif %}
         </nav>
+
     </header>
 
     <div class="hero">
@@ -96,6 +107,7 @@
         </div>
     </section>
 
+    {% if session.get("user_id") %}
     <section class="learning-track" id="trilha">
 
         <h1 class="track-title">Trilha de Aprendizagem</h1>
@@ -154,6 +166,7 @@
             <a class="btn-more-trails" href="/maisTrilhas">Clique aqui para acessar mais Trilhas</a>
         </div>
     </section>
+    {% endif %}
 
     <section class="plans-section" id="planos">
         <h1 class="plans-title-section">Nossos planos</h1>
@@ -215,103 +228,9 @@
         </form>
     </section>
 
-    <section class="ia-section" id="ia">
-        <style>
-            #cameraWrapper {
-                position: relative;
-                width: 100%;
-                max-width: 640px;
-                margin: auto;
-            }
-
-            #userCamera {
-                width: 100%;
-                height: auto;
-                display: block;
-                border-radius: 12px;
-                background: #000;
-                border: 1px solid #ddd;
-            }
-
-            #overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100% !important;
-                height: 100% !important;
-                pointer-events: none;
-            }
-
-            .recognized-box {
-                margin-top: 12px;
-                background: #fafafa;
-                padding: 10px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-            }
-
-            #recognizedText {
-                min-height: 32px;
-                margin-top: 6px;
-            }
-
-            .btn-row {
-                margin-top: 12px;
-                display: flex;
-                gap: 10px;
-                justify-content: center;
-            }
-
-            .btn-row button {
-                padding: 1px 1px;
-                border-radius: 8px;
-                cursor: pointer;
-
-            }
-
-            #closeButton {
-                background: orange;
-                color: white;
-            }
-
-            #resetButton {
-                background:orange;
-                color: white;
-                border: none;
-                padding: 20px;
-                border-radius: 30px;
-                font-size: 16px;
-                margin-top: 10px;
-            }
-        </style>
-
-        <h2 class="ia-title">Interaja com a LibrAI</h2>
-        <p class="ia-text">Use gestos manuais para se comunicar com nossa IA em tempo real</p>
-
-        <button id="startButton" class="ia-button">Clique aqui para interagir</button>
-
-        <div id="videoContainer" style="display:none; margin-top: 16px;">
-
-            
-            <div id="cameraWrapper">
-                <video id="userCamera" autoplay playsinline></video>
-                <canvas id="overlay"></canvas>
-            </div>
-
-            
-            <div class="recognized-box">
-                <strong>Texto reconhecido:</strong>
-                <div id="recognizedText"></div>
-            </div>
-
-            <div class="btn-row">
-                <button id="closeButton">X</button>
-                <button id="resetButton">Resetar texto</button>
-            </div>
-        </div>
-    </section>
-
-
+    {% if session.get("user_id") %}
+    
+    {% endif %}
 
     <footer class="footer">
         <div class="footer-container">
@@ -320,7 +239,7 @@
                 <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
                     alt="Logo LibraAI" width="80">
             </div>
-
+                
             <div class="footer-section">
                 <p><strong>E-mail</strong></p>
                 <p>LibraAIServices@gmail.com</p>
@@ -340,15 +259,15 @@
         </div>
 
         <div class="footer-bottom">
-            Copyright © LibrAI 2024-25. Todos os direitos reservados.
+            Copyright © LibrAI 2025-26. Todos os direitos reservados.
         </div>
     </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 
 </body>

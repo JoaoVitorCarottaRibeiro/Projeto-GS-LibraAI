@@ -23,26 +23,6 @@ header {
     flex-shrink: 0;
 }
 
-.menu-links {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-shrink: 1; 
-    gap: 20px;
-}
-
-.menu-links a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: 1.1rem;
-    white-space: nowrap;
-}
-
-.menu-links a:hover {
-    color: orange;
-}
-
 section {
     display: flex;
     flex-direction: column;

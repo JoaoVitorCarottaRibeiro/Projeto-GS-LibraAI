@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+    <title>Ranking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ranking.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}"
+                    alt="Logo Steve" width="80">
+            </a>
+        </div>
+    </header>
+
+    <main class="ranking-container">
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Usuário</th>
+                    <th>Pontos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in ranking %}
+                <tr class="{% if loop.index <= 3 %}top{% endif %}">
+                    <td>{{ loop.index }}</td>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.points }} pts</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

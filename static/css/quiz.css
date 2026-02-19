@@ -155,7 +155,7 @@ input[type="radio"] {
 
 
 @media (max-width: 480px) {
-    /* Header */
+    
     header {
         gap: 8px;
     }

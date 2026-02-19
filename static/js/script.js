@@ -85,18 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     function resizeCanvas() {
-        const video = videoElement;
-        const canvas = overlay;
+    const video = videoElement;
+    const canvas = overlay;
 
-        if (!video.videoWidth || !video.videoHeight) return;
+    if (!video.videoWidth || !video.videoHeight) return;
 
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
 
-        const rect = video.getBoundingClientRect();
-        canvas.style.width = rect.width + "px";
-        canvas.style.height = rect.height + "px";
-    }
+    canvas.style.width = video.offsetWidth + "px";
+    canvas.style.height = video.offsetHeight + "px";
+}
 
     
     async function onResults(results) {
@@ -146,15 +145,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-// JS Módulos e barra de progresso //
-
 const quizAnswers = {
     1: { q1: "b", q2: "c", q3: "a" },
     2: { q1: "b", q2: "b", q3: "a" },
     3: { q1: "b", q2: "b", q3: "a" }
 };
 
-function submitQuiz(moduleNumber) {
+async function submitQuiz(moduleNumber) {
     const form = document.getElementById(`quiz${moduleNumber}`);
     const feedback = document.getElementById("quiz-feedback");
 
@@ -164,7 +161,7 @@ function submitQuiz(moduleNumber) {
     for (let q in answers) {
         const selected = form.querySelector(`input[name="${q}"]:checked`);
         if (!selected) {
-            feedback.textContent = "⚠️ Responda todas as perguntas.";
+            feedback.textContent = "Responda todas as perguntas.";
             feedback.style.color = "orange";
             return;
         }
@@ -174,44 +171,23 @@ function submitQuiz(moduleNumber) {
     }
 
     if (correct === 3) {
-        markModuleCompleted(moduleNumber);
-        feedback.textContent = "✅ Parabéns! Você concluiu este módulo.";
-        feedback.style.color = "green";
+        const resp = await fetch(`/trilha/${moduleNumber}/concluir`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        });
 
-        setTimeout(() => {
-            if (moduleNumber < 3) {
-                window.location.href = `/trilha/${moduleNumber + 1}`;
-            } else {
-                window.location.href = "/trilha/certificado";
-            }
-        }, 1500);
+        if (resp.ok) {
+            feedback.textContent = "Parabéns! Você concluiu este módulo.";
+            feedback.style.color = "orange";
+
+            setTimeout(() => {
+                window.location.href = "/home";
+            }, 1200);
+        }
 
     } else {
-        feedback.textContent = "❌ Algumas respostas estão incorretas. Tente novamente.";
+        feedback.textContent = "Algumas respostas estão incorretas. Tente novamente.";
         feedback.style.color = "red";
     }
 }
 
-// ===============================
-// PROGRESSO DA TRILHA
-// ===============================
-
-function markModuleCompleted(moduleNumber) {
-    let progress = JSON.parse(localStorage.getItem("trilhaProgress")) || [];
-    if (!progress.includes(moduleNumber)) {
-        progress.push(moduleNumber);
-        localStorage.setItem("trilhaProgress", JSON.stringify(progress));
-    }
-}
-
-function updateProgressBar() {
-    const progress = JSON.parse(localStorage.getItem("trilhaProgress")) || [];
-    const percent = (progress.length / 3) * 100;
-
-    const bar = document.querySelector(".progress-fill");
-    if (bar) {
-        bar.style.width = percent + "%";
-    }
-}
-
-document.addEventListener("DOMContentLoaded", updateProgressBar);

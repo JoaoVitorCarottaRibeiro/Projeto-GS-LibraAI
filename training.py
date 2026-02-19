@@ -23,7 +23,6 @@ y = data["label"].values
 print("[INFO] Features:", X.shape)
 print("[INFO] Labels:", set(y))
 
-# salva X_train para rejection no app.py
 np.save("X_train.npy", X)
 
 model = RandomForestClassifier(

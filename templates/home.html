@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibrAI - Home</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/logo-icon.png') }}">
+</head>
+
+<header>
+    <div class="logo">
+        <a href="{{ url_for('home') }}">
+            <img class="image1" src="{{ url_for('static', filename='Images/logo-sem-fundo1.png') }}" alt="Logo LibraAI"
+                width="80">
+        </a>
+    </div>
+
+    <nav class="menu-links">
+        {% if session.get("user_id") %}
+        <a href="#trilha">Trilha</a>
+        <a href="#ia">IA</a>
+        <a href="/logout">Sair</a>
+        {% else %}
+        <a href="#planos">Planos</a>
+        <a href="#contatos">Contato</a>
+        <a class="loginBTN" href="/login">Login</a>
+        {% endif %}
+    </nav>
+</header>
+
+<body>
+
+    <main class="home-container">
+
+        <section class="card profile-card">
+
+            <div class="profile-image">
+                <div class="avatar-wrapper">
+                    <img class="profile-avatar"
+                        src="{{ session.get('user_photo', url_for('static', filename='Images/Default_image.png')) }}"
+                        alt="Foto do usuário" id="profilePreview">
+                </div>
+
+                <form action="/upload-foto" method="POST" enctype="multipart/form-data">
+                    <label class="upload-btn">
+                        Alterar foto
+                        <input type="file" name="photo" accept="image/*" hidden onchange="this.form.submit()">
+                    </label>
+                </form>
+            </div>
+
+            <div class="profile-info">
+                <h2>Bem-vindo, {{ session.user_name }}</h2>
+
+                {% if all_completed %}
+                    <a href="{{ url_for('certificados') }}" class="btn-certificados">
+                 Exibir Certificados
+                </a>
+                {% endif %}
+
+            </div>
+
+        </section>
+        
+        <section class="card progress-card">
+            <h3>Sua trilha de aprendizagem</h3>
+
+            <ul class="progress-list">
+                {% for module_id in [1, 2, 3] %}
+                {% set status = progress_map.get(module_id) or 'not_started' %}
+
+                <li class="
+                    {% if status == 'completed' %}done{% endif %}
+                    {% if status == 'in_progress' %}in-progress{% endif %}
+                ">
+                    {% if status == 'completed' %}
+                    ✅ Módulo {{ module_id }} — Concluído
+                    {% elif status == 'in_progress' %}
+                    ▶️ Módulo {{ module_id }} — Em andamento
+                    {% else %}
+                    ⏳ Módulo {{ module_id }} — Não iniciado
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="card ranking-card">
+            <h3>Ranking LibrAI</h3>
+
+            <ul class="ranking-list">
+                {% for user in top3 %}
+                <li class="ranking-item">
+                    <span class="rank">
+                        {% if loop.index == 1 %}🥇{% elif loop.index == 2 %}🥈{% else %}🥉{% endif %}
+                    </span>
+                    <span class="name">{{ user.nome }}</span>
+                    <span class="points">{{ user.points }} pts</span>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <a href="/ranking" class="btn-ranking">Ver ranking completo</a>
+        </section>
+
+    </main>
+   
+    <section class="learning-track" id="trilha">
+
+        <h1 class="track-title">Trilha de Aprendizagem</h1>
+        <p class="track-description">
+            Explore conteúdos desenvolvidos para ampliar sua compreensão sobre acessibilidade,
+            inclusão e o papel da tecnologia no futuro do trabalho.
+        </p>
+
+        <div class="progress-container">
+            <p>Seu progresso</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ progress_percent }}%;"></div>
+            </div>
+        </div>
+
+        <div class="timeline">
+
+            {% set s1 = progress_map.get(1) or 'not_started' %}
+            <div class="timeline-item
+            {% if s1 == 'completed' %}done{% elif s1 == 'in_progress' %}in-progress{% endif %}">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h2>Conectar Pessoas - 100 pontos</h2>
+                    <p>
+                        Entenda como a comunicação acessível transforma ambientes de trabalho e
+                        cria pontes reais entre pessoas.
+                    </p>
+                    <a href="/trilha/1" class="module-button">Acessar módulo</a>
+                </div>
+            </div>
+
+            {% set s2 = progress_map.get(2) or 'not_started' %}
+            <div class="timeline-item
+            {% if s2 == 'completed' %}done{% elif s2 == 'in_progress' %}in-progress{% endif %}">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h2>Ampliar Oportunidades - 50 pontos</h2>
+                    <p>
+                        Descubra como tecnologias assistivas podem ampliar o acesso ao mercado de trabalho.
+                    </p>
+                    <a href="/trilha/2" class="module-button">Acessar módulo</a>
+                </div>
+            </div>
+            
+            {% set s3 = progress_map.get(3) or 'not_started' %}
+            <div class="timeline-item
+            {% if s3 == 'completed' %}done{% elif s3 == 'in_progress' %}in-progress{% endif %}">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h2>Tecnologia com Propósito - 150 pontos</h2>
+                    <p>
+                        Veja como a inovação pode gerar impacto social e desenvolvimento humano.
+                    </p>
+                    <a href="/trilha/3" class="module-button">Acessar módulo</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="div-botton">
+            <a class="btn-more-trails" href="/maisTrilhas">
+                 Acesse mais Trilhas!
+            </a>
+        </div>
+    </section>
+
+    <section class="ia-section" id="ia">
+        <h2 class="ia-title">Interaja com a LibrAI</h2>
+        <p class="ia-text">Use gestos manuais para se comunicar com nossa IA em tempo real</p>
+
+        <button id="startButton" class="ia-button">Clique aqui para interagir</button>
+
+        <div id="videoContainer" style="display:none; margin-top: 16px;">
+
+
+            <div id="cameraWrapper">
+                <video id="userCamera" autoplay playsinline></video>
+                <canvas id="overlay"></canvas>
+            </div>
+
+
+            <div class="recognized-box">
+                <strong>Texto reconhecido:</strong>
+                <div id="recognizedText"></div>
+            </div>
+
+            <div class="btn-row">
+                <button id="closeButton">X</button>
+                <button id="resetButton">Resetar texto</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="impact-container">
+
+            <h2 class="impact-title">
+                Libras transforma vidas - dentro e fora do LibrAI
+            </h2>
+
+            <p class="impact-subtitle">
+                Cada sinal aprendido aqui pode significar mais inclusão lá fora.
+                Apoiar iniciativas para pessoas surdas é ampliar vozes, acessos e oportunidades.
+            </p>
+
+            <div class="impact-cards">
+
+                <div class="impact-card">
+                    <img class="impact-images" src="../static/Images/feneis_matriz_logo.png" alt="image1-impact">
+                    <h3 class="impact-names">FENEIS</h3>
+                    <p>Federação Nacional de Educação e Integração dos Surdos</p>
+                    <a href="https://brazilfoundation.org/project/federacao-nacional-de-educacao-e-integracao-dos-surdos-feneis-national-federation-of-education-and-integration-of-the-deaf-2/?gad_source=1&gad_campaignid=19306368615&gbraid=0AAAAADtJqAUdHEb97pQ5wWoOcy_T44gQY&gclid=Cj0KCQiAnJHMBhDAARIsABr7b86vbfFcif1LZ8Kk9NYg8FfeSlLnskmlnzb-lEZ-antf6E5_bGAqZbIaAtMAEALw_wcB"
+                        target="_blank">Saiba mais</a>
+                </div>
+
+                <div class="impact-card">
+                    <img class="impact-images" src="../static/Images/logotipo-ines-html.png" alt="image2-impact">
+                    <h3 class="impact-names">INES</h3>
+                    <p>Instituto Nacional de Educação de Surdos.</p>
+                    <a href="https://www.gov.br/ines/pt-br" target="_blank">Saiba mais</a>
+                </div>
+
+                <div class="impact-card">
+                    <img class="impact-images" src="../static/Images/seli-image-html.png" alt="image3-impact">
+                    <h3 class="impact-names">Seli</h3>
+                    <p>Instituto de Educação Bilíngue para Surdos</p>
+                    <a href="https://seli.com.br/" target="_blank">Saiba mais</a>
+                </div>
+
+            </div>
+
+            <div class="impact-footer">
+                <p>Inclusão começa com comunicação.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

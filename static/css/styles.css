@@ -16,7 +16,7 @@ img {
     display: block;
 }
 
-/* ===== HEADER ===== */
+/* Header */
 header {
     width: 100%;
     padding: 15px 40px;
@@ -48,7 +48,20 @@ header {
     color: orange;
 }
 
-/* ===== HERO ===== */
+.menu-links a.loginBTN{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: orange;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.menu-links a.loginBTN:hover {
+    background: #d87f00;
+    color: white;
+}
+
+/* Hero */
 .hero {
     position: relative;
     width: 100%;
@@ -85,7 +98,8 @@ header {
     font-size: 36px;
 }
 
-/* ===== SOBRE NÓS ===== */
+/* Sobre nós */
+
 .section-image-text {
     padding: 60px 0;
     background: #ffffff;
@@ -150,7 +164,7 @@ strong {
     color: #ffa500;
 }
 
-/* ===== OUR OBJECTIVE (Cards) ===== */
+/* Nossos objetivos */
 .our-objective {
     background-color: rgb(250, 185, 65);
     padding-bottom: 3rem;
@@ -217,7 +231,7 @@ strong {
     filter: contrast(110%) brightness(105%) saturate(105%);
 }
 
-/* ===== LEARNING TRACK (Trilha) ===== */
+/* Trilha de aprendizado */
 .learning-track {
     max-width: 900px;
     margin: 50px auto;
@@ -300,7 +314,7 @@ strong {
     color: #444;
 }
 
-/* ===== BOTÕES ===== */
+/* Botões */
 .module-button {
     padding: 12px 20px;
     background: orange;
@@ -340,7 +354,7 @@ strong {
     background: #d87f00;
 }
 
-/* ===== CERTIFICATE ===== */
+/* Certificado */
 .certificate-area {
     text-align: center;
     margin-top: 60px;
@@ -366,7 +380,7 @@ strong {
     background: #d67a00;
 }
 
-/* ===== PLANS ===== */
+/* Planos */
 .plans-section {
     background-color: rgb(250, 185, 65);
     padding: 60px 0;
@@ -443,7 +457,7 @@ strong {
 .plan-black { background: #111; color: white; }
 .plan-black ul li::before { color: #FF9B40; }
 
-/* ===== CONTACT ===== */
+/* Contato */
 .contact-section {
     max-width: 800px;
     margin: 50px auto;
@@ -512,7 +526,7 @@ textarea {
     background: #d87f00;
 }
 
-/* ===== IA SECTION ===== */
+/* IA */
 .ia-section {
     text-align: center;
     padding: 60px 0;
@@ -573,7 +587,7 @@ textarea {
     cursor: pointer;
 }
 
-/* ===== FOOTER ===== */
+/* Footer */
 .footer {
     background-color: #1c1c1c;
     color: white;
@@ -625,7 +639,7 @@ textarea {
     cursor: pointer;
 }
 
-/* RESPONSIVIDADE AJUSTADA FINAL*/
+/* Responsividade */
 
 @media (max-width: 1024px) {
     

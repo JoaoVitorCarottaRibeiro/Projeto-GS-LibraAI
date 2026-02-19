@@ -1,0 +1,843 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+}
+
+.image1 {
+    height: 80px;
+    width: 60px;
+}
+
+.menu-links {
+    display: flex;
+    align-items: center;
+}
+
+.menu-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.menu-links a:hover {
+    color: orange;
+}
+
+.menu-links a.loginBTN {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: orange;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.menu-links a.loginBTN:hover {
+    background: #d87f00;
+    color: white;
+}
+
+
+/* Main container */
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Perfil */
+
+.profile-card {
+    grid-row: span 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #e5e7eb;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.upload-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: orange;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+
+.profile-info h2 {
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    padding-top: 15px;
+}
+
+.profile-info p {
+    margin: 6px 0;
+    color: #555;
+}
+
+.btn-certificados {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 18px;
+    background: orange;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-certificados:hover {
+    background: #d87f00;
+}
+
+.btn-ranking {
+    display: inline-block;
+    margin-top: 16px;
+    background: transparent;
+    border: 2px solid orange;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: orange;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-ranking:hover {
+    background: orange;
+    color: white;
+}
+
+/* Trilha e progresso */
+
+.ranking-list{
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+.progress-card h3 {
+    margin-bottom: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px 0 16px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, orange, #ff9800);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.progress-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.progress-list li {
+    margin: 6px 0;
+    font-size: 0.95rem;
+}
+
+.progress-list li.done {
+    color: green;
+    font-weight: bold;
+}
+
+/* Trilha de aprendizagem */
+
+.learning-track {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.track-title {
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.track-description {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #444;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.progress-container {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.progress-container p {
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #ddd;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: orange;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.timeline {
+    margin: 50px auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: 4px solid orange;
+}
+
+.timeline-item {
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 18px;
+    height: 18px;
+    background: orange;
+    border-radius: 50%;
+    position: absolute;
+    left: -11px;
+    top: 0px;
+}
+
+.timeline-content {
+    margin-left: 30px;
+    text-align: left;
+}
+
+.timeline-content h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.timeline-content p {
+    margin: 10px 0;
+    color: #444;
+}
+
+/* Botões */
+.module-button {
+    padding: 12px 20px;
+    background: orange;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    display: inline-block;
+    transition: 0.2s;
+    font-size: 1.1rem;
+}
+
+.btn-more-trails {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 16px;
+    font-weight: bold;
+    transition: 0.2s;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+
+    white-space: nowrap;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.div-botton {
+    text-align: center;
+}
+
+.module-button:hover,
+.btn-more-trails:hover {
+    background: #d87f00;
+}
+
+/* Certificado */
+.certificate-area {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.certificate-area h3 {
+    font-size: 1.8rem;
+}
+
+.certificate-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: orange;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.certificate-button:hover {
+    background: #d67a00;
+}
+
+/* IA */
+
+.ia-section {
+    text-align: center;
+    padding: 60px 0;
+    background: #f7f7f7;
+}
+
+.ia-title {
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.ia-text {
+    color: #444;
+    font-size: 20px;
+    max-width: 600px;
+    margin: 10px auto 30px auto;
+}
+
+.ia-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background: orange;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.ia-button:hover {
+    background: #d87f00;
+}
+
+#videoContainer {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin: 20px auto;
+    display: none;
+}
+
+
+#closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: orange;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#cameraWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin: auto;
+}
+
+#userCamera {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    background: #000;
+    border: 1px solid #ddd;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none;
+}
+
+.recognized-box {
+    margin-top: 12px;
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#recognizedText {
+    min-height: 32px;
+    margin-top: 6px;
+}
+
+.btn-row {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-row button {
+    padding: 1px 1px;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+
+#resetButton {
+    background: orange;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+.footer {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 40px 0;
+    border-top: 1px solid #333;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+    padding: 0 40px;
+}
+
+.footer-logo img {
+    width: 80px;
+}
+
+.footer-section p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+}
+
+/* Impacto */
+
+.impact-section {
+    background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+    padding: 80px 20px;
+    color: #e5e7eb;
+}
+
+.impact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.impact-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.impact-subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cbd5f5;
+}
+
+.impact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.impact-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 30px 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.impact-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.impact-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.impact-card p {
+    font-size: 0.95rem;
+    color: #d1d5db;
+    margin-bottom: 20px;
+}
+
+.impact-names{
+    padding-top: 20px;
+}
+
+.impact-card a {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    color: orange;
+    transition: color 0.2s ease;
+}
+
+.impact-card a:hover {
+    color: #d87f00;
+}
+
+.impact-footer {
+    margin-top: 60px;
+    font-size: 1rem;
+    opacity: 0.85;
+}
+
+.impact-images{
+    width: 150px;
+    height: 150px;
+}
+
+/* Responsividade*/
+
+/* 1024px */
+
+@media (max-width: 1024px) {
+
+    header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 20px;
+        gap: 20px;
+    }
+
+    .menu-links {
+        margin-top: 0;
+        margin-left: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 15px;
+        flex-direction: row;
+        flex-shrink: 1;
+    }
+
+    .menu-links a {
+        white-space: nowrap;
+        font-size: 1.1rem;
+        margin-left: 0;
+    }
+
+    .home-container {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .dashboard-cards {
+        width: 100%;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .learning-track,
+    .timeline,
+    .impact-section {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .impact-cards {
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* 768px */
+@media (max-width: 768px) {
+
+    .home-title,
+    .track-title,
+    .impact-title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .track-description,
+    .impact-subtitle {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .menu-links {
+        width: auto;
+        flex-wrap: nowrap;
+        gap: 10px;
+        margin-left: 0;
+    }
+
+    .menu-links a {
+        margin-left: 0;
+        font-size: 0.9rem;
+        margin-right: 0;
+    }
+
+    .home-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+    }
+
+    .profile-card {
+        grid-row: auto;
+    }
+
+    .progress-card,
+    .ranking-card {
+        text-align: center;
+    }
+
+    .learning-track {
+        padding: 40px;
+        text-align: center;
+    }
+
+    .timeline {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .timeline-content {
+        margin-left: 25px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .module-button {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+        font-size: 18px;
+        white-space: normal;
+    }
+
+    .btn-more-trails{
+        margin-top: 20px;
+    }
+
+    .recognized-box{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .impact-section {
+        padding: 40px;
+    }
+
+    .impact-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .impact-card {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .card:hover,
+    .impact-card:hover {
+        transform: none;
+    }
+
+}
+
+
+/* 480px */
+@media (max-width: 480px) {
+
+    .home-title,
+    .track-title,
+    .impact-title {
+        font-size: 24px;
+    }
+
+    .track-description,
+    .impact-subtitle {
+        font-size: 14px;
+    }
+
+    header {
+        gap: 10px;
+    }
+
+    .menu-links {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .menu-links a {
+        font-size: 0.8rem;
+    }
+
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+
+    .home-container,
+    .dashboard-cards,
+    .learning-track,
+    .impact-section,
+    .timeline {
+    width: 100%;
+    max-width: 100%;
+}   
+
+}
+
